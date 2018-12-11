@@ -1,0 +1,120 @@
+package dao.impl;
+
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import beans.BuyRecord;
+import beans.Equipment;
+import dao.FileName;
+import dao.IEquipmentDao;
+import util.FileUtil;
+
+public class EquipmentDaoImpl implements IEquipmentDao{
+	ArrayList<Equipment> eqs;
+	FileUtil<Equipment> fileUtil = new FileUtil<>(FileName.EQUIPMENT_FILE);
+	BuyRecordDaoImpl brdi;
+	UserDaoImpl udi;
+	
+	public EquipmentDaoImpl(BuyRecordDaoImpl brdi, UserDaoImpl udi) {
+		super();
+		this.brdi = brdi;
+		this.udi = udi;
+	}
+
+	@Override
+	public boolean add(Equipment t) {
+		eqs.add(t);
+		try {
+			fileUtil.writeToFile(eqs);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean remove(String name) {
+		boolean result = eqs.remove(name);
+		try {
+			fileUtil.writeToFile(eqs);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public ArrayList<Equipment> selectByJob(String job) {
+		try {
+			ArrayList<Equipment> temp = fileUtil.readFromFile();
+			if(null != temp && temp.size()>0) {
+				eqs = temp;
+			}else {
+				return null;
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ArrayList<Equipment> temp = new ArrayList<Equipment>();
+		for(Equipment eq : eqs) {
+			if(eq.getJob().equals(job)) {
+				temp.add(eq);
+			}
+		}
+		return temp;
+		
+	}
+
+	@Override
+	public ArrayList<Equipment> selectAll() {
+		try {
+			ArrayList<Equipment> temp = fileUtil.readFromFile();
+			if(null != temp && temp.size()>0) {
+				eqs = temp;
+			}else {
+				return null;
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return eqs;
+	}
+
+	@Override
+	public boolean buyEquipment(String equipmentName, int buyCount) {
+	
+		return false;
+	}
+
+	@Override
+	public ArrayList<Equipment> selectByName(String name) {
+		
+		return null;
+	}
+
+	@Override
+	public boolean replace(String name, String newName, String newJob, int newPrice, int newCount) {
+		if(eqs.contains(name)) {
+			int index = eqs.indexOf(name);
+			Equipment eq = eqs.get(index);
+			eq.setName(newName);
+			eq.setPrice(newPrice);
+			eq.setCount(newCount);
+			
+			try {
+				fileUtil.writeToFile(eqs);
+				return true;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+	}
+
+}

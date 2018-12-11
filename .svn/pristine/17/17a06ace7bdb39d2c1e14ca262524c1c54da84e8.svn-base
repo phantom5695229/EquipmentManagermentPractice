@@ -1,0 +1,57 @@
+package dao.impl;
+
+import java.util.ArrayList;
+
+import beans.BuyRecord;
+import beans.User;
+import dao.FileName;
+import dao.IBuyRecordDao;
+import util.FileUtil;
+
+public class BuyRecordDaoImpl implements IBuyRecordDao{
+	ArrayList<BuyRecord> brs;
+	FileUtil<BuyRecord> fileUtil = new FileUtil<>(FileName.BUY_RECORD_FILE);
+	
+	@Override
+	public boolean add(BuyRecord t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean replace(String name, String newName, String newJob, String newPrice, String newCount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectByJob(String job) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectByUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

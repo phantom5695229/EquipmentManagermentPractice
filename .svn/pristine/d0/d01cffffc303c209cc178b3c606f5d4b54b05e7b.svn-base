@@ -1,0 +1,17 @@
+package test;
+
+import dao.IEquipmentDao;
+import dao.impl.BuyRecordDaoImpl;
+import dao.impl.EquipmentDaoImpl;
+import dao.impl.UserDaoImpl;
+
+public class Test {
+	public static void main(String[] args) {
+		BuyRecordDaoImpl brdi = new BuyRecordDaoImpl();
+		UserDaoImpl udi = new UserDaoImpl();
+		IEquipmentDao ied = new EquipmentDaoImpl(brdi,udi);
+		System.out.println(udi.regist(1234, "abc"));
+		System.out.println(udi.login(1234, "abc"));
+		
+	}
+}

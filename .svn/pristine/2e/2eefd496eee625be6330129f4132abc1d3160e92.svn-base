@@ -1,0 +1,38 @@
+package test;
+
+import beans.Equipment;
+import beans.User;
+import dao.IEquipmentDao;
+import dao.impl.BuyRecordDaoImpl;
+import dao.impl.EquipmentDaoImpl;
+import dao.impl.UserDaoImpl;
+
+public class Test {
+	public static void main(String[] args) {
+		BuyRecordDaoImpl brdi = new BuyRecordDaoImpl();
+		UserDaoImpl udi = new UserDaoImpl();
+		IEquipmentDao ied = new EquipmentDaoImpl(brdi,udi);
+/*		System.out.println(udi.regist(1234, "abc"));
+		System.out.println(udi.login(1234, "abc"));*/
+/*		Equipment eq1 = new Equipment("¥ÛΩ£", "’Ω ø", 100, 10);
+		Equipment eq2 = new Equipment("∑®’»", "∑® ¶", 200, 30);
+		Equipment eq3 = new Equipment("≥§π≠", "µ¡‘Ù", 150, 20);
+		Equipment eq4 = new Equipment("∂ÃΩ£", "µ¡‘Ù", 150, 20);*/
+/*		ied.add(eq1);
+		ied.add(eq2);
+		ied.add(eq3);
+		ied.add(eq4);
+		ied.remove("¥ÛΩ£");*/
+//		System.out.println(ied.selectAll());
+//		System.out.println(ied.selectByJob("µ¡‘Ù"));
+//		System.out.println(ied.replace("∂ÃΩ£", "ÿ∞ ◊", "µ¡‘Ù", 300, 30));
+//		System.out.println(ied.selectByName("∑®’»"));
+		System.out.println(ied.selectAll());
+		System.out.println(udi.regist(1234, "abc"));
+		System.out.println(udi.regist(5678, "abc"));
+		User loginUser = udi.login(1234, "abc");
+		System.out.println(loginUser);
+		System.out.println(ied.buyEquipment(loginUser, "∑®’»", 1));
+		System.out.println(ied.selectAll());
+	}
+}

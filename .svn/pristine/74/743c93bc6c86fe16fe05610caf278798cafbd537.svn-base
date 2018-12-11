@@ -1,0 +1,7 @@
+package dao;
+
+import beans.Equipment;
+
+public interface IEquipmentDao extends IBaseDao<Equipment>{
+	boolean buyEquipment(String equipmentName,int buyCount);
+}

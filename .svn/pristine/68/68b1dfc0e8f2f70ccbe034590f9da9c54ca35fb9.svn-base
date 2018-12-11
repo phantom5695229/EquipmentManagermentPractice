@@ -1,0 +1,52 @@
+package dao.impl;
+
+import java.util.ArrayList;
+
+import beans.Equipment;
+import dao.FileName;
+import dao.IEquipmentDao;
+import util.FileUtil;
+
+public class EquipmentDaoImpl implements IEquipmentDao{
+	ArrayList<Equipment> eqs;
+	FileUtil<Equipment> fileUtil = new FileUtil<>(FileName.EQUIPMENT_FILE);
+	BuyRecordDaoImpl brdi;
+	UserDaoImpl udi;
+	
+	@Override
+	public boolean add(Equipment t) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Equipment> selectByJob(String job) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Equipment> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean buyEquipment(String equipmentName, int buyCount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Equipment> selectByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

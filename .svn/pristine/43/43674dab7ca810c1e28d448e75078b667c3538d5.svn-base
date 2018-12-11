@@ -1,0 +1,83 @@
+package dao.impl;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import beans.BuyRecord;
+import beans.User;
+import dao.FileName;
+import dao.IBuyRecordDao;
+import util.FileUtil;
+
+public class BuyRecordDaoImpl implements IBuyRecordDao{
+	ArrayList<BuyRecord> brs;
+	FileUtil<BuyRecord> fileUtil = new FileUtil<>(FileName.BUY_RECORD_FILE);
+	
+	public BuyRecordDaoImpl() {
+		try {
+			ArrayList<BuyRecord> temp = fileUtil.readFromFile();
+			if (null != temp && temp.size() > 0) {
+				brs = temp;
+			} else {
+				brs = new ArrayList<BuyRecord>();
+			}
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean add(BuyRecord t) {
+		try {
+			ArrayList<BuyRecord> temp = fileUtil.readFromFile();
+			if (null != temp && temp.size() > 0) {
+				brs = temp;
+			} else {
+				return false;
+			}
+		} catch (ClassNotFoundException | IOException e) {
+			e.printStackTrace();
+		}
+		brs.add(t);
+		try {
+			fileUtil.writeToFile(brs);
+			return true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean remove(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public ArrayList<BuyRecord> selectByJob(String job) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectByUser(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<BuyRecord> selectByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

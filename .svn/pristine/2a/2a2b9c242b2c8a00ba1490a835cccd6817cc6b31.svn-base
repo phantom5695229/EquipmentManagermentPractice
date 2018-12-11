@@ -1,0 +1,12 @@
+package dao;
+
+import java.util.ArrayList;
+
+import beans.BuyRecord;
+import beans.User;
+
+public interface IBuyRecordDao extends IBaseDao<BuyRecord>{
+	boolean replace(String name,String newName,String newJob,String newPrice,String newCount);
+	ArrayList<BuyRecord> selectByUser(User user);
+
+}

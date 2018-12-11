@@ -1,0 +1,8 @@
+package dao;
+
+import beans.Equipment;
+
+public interface IEquipmentDao extends IBaseDao<Equipment>{
+	boolean replace(String name,String newName,String newJob,String newPrice,String newCount);
+	boolean buyEquipment(String equipmentName,int buyCount);
+}
